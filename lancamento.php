@@ -1,6 +1,12 @@
 <?php
 include "header.php";
-include "dados.php";
+include "config.php";
+
+$sql = "select * from lancamento";
+$consulta = $pdo->prepare($sql);
+$consulta->execute();
+
+$lancamento = $consulta->fetchAll(PDO::FETCH_ASSOC); // variavel onde a consulta do sql está armazenada !!
 
 ?>
 
@@ -21,12 +27,12 @@ include "dados.php";
                 </p>
 
                 <p>
-                    <a href="lancaproduto.php?id=<?= $lanca["id"] ?>">Detalhes</a>
+                    <a href="lancaproduto.php?codigo=<?= $lanca["codigo"] ?>">Detalhes</a>
                 </p>
             </div>
             
         <?php
-        }
+        };
         ?>
 
     </div>

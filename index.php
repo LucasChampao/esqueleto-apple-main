@@ -1,6 +1,13 @@
 <?php
 include "header.php";
-include "dados.php";
+include "config.php";
+
+$sql = "select * from produtos";
+$consulta = $pdo->prepare($sql);
+$consulta->execute();
+
+$produtos = $consulta->fetchAll(PDO::FETCH_ASSOC);
+
 ?>
 
 <main>
@@ -24,7 +31,7 @@ include "dados.php";
                 </p>
 
                 <p>
-                    <a href="produto.php?id=<?= $produto["id"] ?>">Detalhes</a>
+                    <a href="produto.php?codigo=<?= $produto["codigo"] ?>">Detalhes</a>
                 </p>
             </div>
 
